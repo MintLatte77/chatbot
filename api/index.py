@@ -9,3 +9,5 @@ def home():
 @app.route('/about')
 def about():
     return 'About'
+
+app.run("0.0.0.0")
