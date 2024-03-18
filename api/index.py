@@ -1,4 +1,4 @@
-from flask import Flask, request
+import flask
 
 app = Flask(__name__)
 
@@ -13,17 +13,7 @@ def about():
 @app.route('/meal')
 def meal():
     json_data = request.get_json()
-    return {
-    "version": "2.0",
-    "template": {
-        "outputs": [
-            {
-                "simpleText": {
-                    "text": json_data
-                }
-            }
-        ]
-    }
-}
+    timezone = json_data['userRequest']['timezone']
+    return {"version": "2.0","template":{"outputs": [{"simpleText": {"text": json_data}}]}}
 
 app.run("0.0.0.0")
